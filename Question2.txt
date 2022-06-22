@@ -1,0 +1,29 @@
+CREATE TABLE Products(
+ProductId INT PRIMARY KEY,
+[Name] NVARCHAR(50));
+INSERT INTO Products VALUES
+(1,'Meat'),
+(2,'Juice'),
+(3,'Egg');
+
+CREATE TABLE Categories(
+CategoryId INT PRIMARY KEY,
+[Name] NVARCHAR(50));
+INSERT INTO Categories VALUES
+(1,'NotVegetarians'),
+(2,'Vegetarians');
+
+CREATE TABLE ProductCategories(
+ProductId INT FOREIGN KEY REFERENCES Products(ProductId),
+CategoryId INT FOREIGN KEY REFERENCES Categories(CategoryId),
+PRIMARY KEY (ProductId, CategoryId));
+INSERT INTO ProductCategories VALUES
+(1,1),
+(2,2),
+(3,1);
+
+SELECT P.[Name], C.[Name] FROM Products P
+LEFT JOIN ProductCategories PC
+ON P.ProductId=PC.ProductId
+LEFT JOIN Categories C
+ON C.CategoryId=PC.CategoryId
