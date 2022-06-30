@@ -11,6 +11,7 @@ namespace SquareTest
     {
         public static Triangle _triangle = new Triangle(3, 4, 5);
         public static Triangle ZeroOrNegativeSide() => new Triangle(-1, 1, 1);
+        public static Triangle IsValid() => new Triangle(1, 1, 2);
         public static double GetSquare() => _triangle.GetSquare();
         public static bool IsRight() => _triangle.IsRight();
     }

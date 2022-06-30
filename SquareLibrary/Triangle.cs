@@ -13,14 +13,24 @@ namespace SquareLibrary
         public double C { get; set; }
         public Triangle(double a, double b, double c)
         {
+            //Я сделал валидацию через StringBuilder для более подробного списка ошибок
+            StringBuilder errors = new StringBuilder();
             if (a <= 0)
-                throw new ArgumentException($"Значение A дожно быть больше 0 \n Текущее значение: {a}");
-            A = a;
+                errors.AppendLine($"\nЗначение A дожно быть больше 0. \nТекущее значение: {a}");
             if (b <= 0)
-                throw new ArgumentException($"Значение B дожно быть больше 0 \n Текущее значение: {b}");
-            B = b;
+                errors.AppendLine($"\nЗначение B дожно быть больше 0. \nТекущее значение: {b}");
             if (c <= 0)
-                throw new ArgumentException($"Значение C дожно быть больше 0 \n Текущее значение: {c}");
+                errors.AppendLine($"\nЗначение C дожно быть больше 0. \n Текущее значение: {c}");
+            if (a >= b + c)
+                errors.AppendLine($"\nЗначение A дожно быть больше B+C. \nТекущие значение: A = {a}; B+C = {b+c}");
+            if (b >= a + c)
+                errors.AppendLine($"\nЗначение B дожно быть больше A+C. \nТекущие значение: B = {b}; A+C = {a+c}");
+            if (c >= a + b)
+                errors.AppendLine($"\nЗначение C дожно быть больше A+B. \nТекущие значение: C = {c}; A+B = {a+b}");
+            if(errors.Length > 0)
+                throw new ArgumentException(errors.ToString());
+            B = b;
+            A = a;
             C = c;
 
         }
