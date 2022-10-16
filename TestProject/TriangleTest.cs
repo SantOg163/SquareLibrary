@@ -19,5 +19,8 @@ namespace TestProject
         public static double GetSquare() => _triangle.GetSquare();
         [Fact]
         public static bool IsRight() => _triangle.IsRight();
+        [Fact]
+        public static void UnknownSquare()=>Figure.GetSquare(3,4,5);
+        
     }
 }

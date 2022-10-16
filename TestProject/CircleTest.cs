@@ -10,12 +10,15 @@ namespace TestProject
 {
     public class CircleTest
     {
-        private static Circle circle = new Circle(2);
+        private static Circle _circle = new Circle(2);
         [Fact]
         public static  Circle AddCircle() => new Circle(2);
         [Fact]
         public static Circle ZeroOrNegativeRadius() => new Circle(0);
         [Fact]
-        public static double GetSquare() => circle.GetSquare();
+        public static double GetSquare() => _circle.GetSquare();
+        [Fact]
+        public static void UnknownSquare() => Figure.GetSquare(1);
+        
     }
 }
